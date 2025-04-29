@@ -40,7 +40,7 @@ In addition, the project also allows users to explore key **tech companies** in 
   - **Economic Events News** 📈: Stay updated on the latest economic events such as financial reports, market changes, and geopolitical economic impacts.
   - The news dropdown menu will provide real-time feeds, giving users access to the latest stories about the tech and economic sectors.
 
-- **Tooltips** 🛠️:
+- **Future Feature: Tooltips** 🛠️:
   - Hover over any country to see its name 🏷️ and detailed economic data 🧾 in a tooltip 🏷️.
   - Tooltips can show GDP, inflation rates, unemployment, tech sector data, and more!
   
