@@ -1,81 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Interactive GDP Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптимизированная карта с amCharts 5</title>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/data/countries2.js"></script>
 
-  <!-- amCharts 5 -->
-  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
-
-  <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      font-family: sans-serif;
-    }
-    #chartdiv {
-      width: 100%;
-      height: 100vh;
-    }
-  </style>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #chartdiv {
+            width: 100%;
+            height: 95vh;
+        }
+    </style>
 </head>
 <body>
-  <div id="chartdiv"></div>
+    <div id="chartdiv"></div>
 
-  <script>
-    // Create root and map
-    const root = am5.Root.new("chartdiv");
+    <script>
+        // Кэшируем континенты для быстрого доступа
+        const continents = {
+            "AF": 0, "AN": 1, "AS": 2, "EU": 3, "NA": 4, "OC": 5, "SA": 6
+        };
 
-    const chart = root.container.children.push(
-      am5map.MapChart.new(root, {
-        panX: "rotateX",
-        panY: "translateY",
-        projection: am5map.geoNaturalEarth1()
-      })
-    );
+        // Кэш для геоданных
+        const geoCache = {};
 
-    chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+        // Функция для загрузки геоданных, если они еще не загружены
+        const loadGeoData = (map) => {
+            if (geoCache[map]) {
+                return Promise.resolve(geoCache[map]);
+            } else {
+                return am5.net.load("https://cdn.amcharts.com/lib/5/geodata/json/" + map + ".json", chart)
+                    .then((results) => {
+                        const geodata = am5.JSONParser.parse(results.response);
+                        geoCache[map] = geodata;
+                        return geodata;
+                    });
+            }
+        };
 
-    const polygonSeries = chart.series.push(
-      am5map.MapPolygonSeries.new(root, {
-        geoJSON: am5geodata_worldLow,
-        exclude: ["AQ"],
-        valueField: "value",
-        calculateAggregates: true
-      })
-    );
+        // Создаем корневой элемент с ограниченной анимацией
+        const root = am5.Root.new("chartdiv", {
+            useSafeResolution: false,
+            paddingRight: 0,
+            paddingBottom: 0
+        });
 
-    // Heatmap color settings
-    polygonSeries.set("heatRules", [{
-      target: polygonSeries.mapPolygons.template,
-      dataField: "value",
-      min: am5.color(0xe0f7fa),
-      max: am5.color(0x006064),
-      key: "fill"
-    }]);
+        // Применяем только необходимые темы
+        root.setThemes([
+            am5themes_Animated.new(root, {
+                animationsEnabled: false // Отключаем все анимации для повышения производительности
+            })
+        ]);
 
-    // Tooltip on hover
-    polygonSeries.mapPolygons.template.setAll({
-      tooltipText: "{name}: [bold]{value.formatNumber('#,###.')} B $[/]",
-      interactive: true
-    });
+        // Создаем карту с оптимизированными настройками
+        const chart = root.container.children.push(am5map.MapChart.new(root, {
+            panX: "rotateX",
+            projection: am5map.geoMercator(),
+            maxPanOut: 2,
+            wheelX: "none", // Отключаем прокрутку колесиком
+            wheelY: "none"  // Отключаем прокрутку колесиком
+        }));
 
-    polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color(0xff5722)
-    });
+        // Предварительно подготавливаем данные стран
+        const data = [];
+        for (const id in am5geodata_data_countries2) {
+            if (am5geodata_data_countries2.hasOwnProperty(id)) {
+                const country = am5geodata_data_countries2[id];
+                if (country.maps && country.maps.length) {
+                    data.push({
+                        id: id,
+                        map: country.maps[0],
+                        polygonSettings: {
+                            fill: am5.color(continents[country.continent_code] * 0x111111)
+                        }
+                    });
+                }
+            }
+        }
 
-    // Load data from JSON
-    fetch("data.json")
-      .then(response => response.json())
-      .then(data => {
-        polygonSeries.data.setAll(data);
-      })
-      .catch(error => {
-        console.error("Error loading data:", error);
-      });
-  </script>
+        // Создаем серию полигонов для мировой карты с упрощенными данными
+        const worldSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+            geoJSON: am5geodata_worldLow,
+            exclude: ["AQ"] // Исключаем Антарктиду
+        }));
+
+        // Оптимизируем шаблон полигонов
+        worldSeries.mapPolygons.template.setAll({
+            tooltipText: "{name}",
+            interactive: true,
+            fill: am5.color(0xaaaaaa),
+            templateField: "polygonSettings",
+            strokeWidth: 0.2,
+            strokeOpacity: 0.3
+        });
+
+        // Состояние наведения
+        worldSeries.mapPolygons.template.states.create("hover", {
+            fill: am5.color(0x999999)
+        });
+
+        // Создаем серию полигонов для карты страны, скрытую по умолчанию
+        const countrySeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+            visible: false
+        }));
+
+        // Оптимизируем шаблон полигонов стран
+        countrySeries.mapPolygons.template.setAll({
+            tooltipText: "{name}",
+            interactive: true,
+            fill: am5.color(0xaaaaaa),
+            strokeWidth: 0.2,
+            strokeOpacity: 0.5
+        });
+
+        // Состояние наведения для страны
+        countrySeries.mapPolygons.template.states.create("hover", {
+            fill: am5.color(0x999999)
+        });
+
+        // Настроить событие клика для стран
+        worldSeries.mapPolygons.template.events.on("click", (ev) => {
+            const dataItem = ev.target.dataItem;
+            const data = dataItem.dataContext;
+
+            // Показываем индикатор загрузки
+            countrySeries.hide();
+            backContainer.show();
+
+            // Загружаем данные только при необходимости
+            loadGeoData(data.map).then((geodata) => {
+                countrySeries.set("geoJSON", geodata);
+                countrySeries.set("fill", data.polygonSettings.fill);
+
+                // Показать после полной загрузки
+                countrySeries.show();
+                worldSeries.hide();
+                chart.zoomToDataItem(dataItem);
+            });
+        });
+
+        // Создаем контейнер для кнопки "Назад"
+        const backContainer = chart.children.push(am5.Container.new(root, {
+            x: am5.p100,
+            centerX: am5.p100,
+            dx: -10,
+            paddingTop: 5,
+            paddingRight: 10,
+            paddingBottom: 5,
+            y: 30,
+            interactiveChildren: false,
+            layout: root.horizontalLayout,
+            cursorOverStyle: "pointer",
+            background: am5.RoundedRectangle.new(root, {
+                fill: am5.color(0xffffff),
+                fillOpacity: 0.2
+            }),
+            visible: false
+        }));
+
+        // Текст для кнопки
+        const backLabel = backContainer.children.push(am5.Label.new(root, {
+            text: "Вернуться к карте мира",
+            centerY: am5.p50
+        }));
+
+        // Обработчик события для кнопки "Назад"
+        backContainer.events.on("click", function() {
+            chart.goHome();
+            worldSeries.show();
+            countrySeries.hide();
+            backContainer.hide();
+        });
+
+        // Загружаем данные для мировой карты
+        worldSeries.data.setAll(data);
+
+        // Включаем deferred рендеринг для улучшения производительности
+        chart.set("deferred", true);
+    </script>
 </body>
 </html>
