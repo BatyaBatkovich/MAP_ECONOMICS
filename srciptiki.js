@@ -1,1 +1,101 @@
-var _0x4dfb72=_0x3bce;(function(_0x4d29e9,_0x4051a5){var _0x18f4ab=_0x3bce,_0x46cd55=_0x4d29e9();while(!![]){try{var _0xdfe29c=-parseInt(_0x18f4ab(0xeb))/0x1*(parseInt(_0x18f4ab(0xdd))/0x2)+-parseInt(_0x18f4ab(0xd8))/0x3+-parseInt(_0x18f4ab(0xcb))/0x4*(parseInt(_0x18f4ab(0xf2))/0x5)+parseInt(_0x18f4ab(0xd0))/0x6+-parseInt(_0x18f4ab(0xec))/0x7*(parseInt(_0x18f4ab(0xd5))/0x8)+parseInt(_0x18f4ab(0xfc))/0x9*(parseInt(_0x18f4ab(0xd4))/0xa)+parseInt(_0x18f4ab(0xf0))/0xb;if(_0xdfe29c===_0x4051a5)break;else _0x46cd55['push'](_0x46cd55['shift']());}catch(_0x521590){_0x46cd55['push'](_0x46cd55['shift']());}}}(_0x3808,0x9603d));var map=L[_0x4dfb72(0xcf)](_0x4dfb72(0xcf),{'center':[15.4542,18.7322],'zoom':0x3,'maxBoundsViscosity':0x1,'preferCanvas':!![]});map['invalidateSize'](),L[_0x4dfb72(0xd1)](_0x4dfb72(0xcc),{'attribution':'©\x20<a\x20href=\x22https://www.openstreetmap.org/copyright\x22>OpenStreetMap</a>\x20contributors','tileSize':0x100,'updateWhenIdle':!![],'updateWhenZooming':![]})[_0x4dfb72(0xe3)](map);var markers=[];function createPulsingMarker(_0x256070,_0xb36c4,_0x4001d4,_0x35f3fb){var _0x590d99=_0x4dfb72,_0x528c50=_0x590d99(0xd7)+_0x35f3fb+_0x590d99(0xf6),_0x5ad6b3=L['divIcon']({'html':_0x528c50,'className':'','iconSize':[0x1e,0x1e],'iconAnchor':[0xf,0xf]}),_0x1d067b=L[_0x590d99(0xfe)]([_0x256070,_0xb36c4],{'icon':_0x5ad6b3})['addTo'](map);return _0x1d067b[_0x590d99(0xde)](_0x4001d4),_0x1d067b;}function _0x3808(){var _0x4a4138=['London','colorDARKBLUE','Ottawa','addTo','getElementById','eachLayer','value','target','Mexico\x20City','lng','zoomend','68778IwFEng','3928267RLYtHp','Boston','colorRED','Sydney','24559216GgZmAK','style','326530TrUsyt','Tokyo','Paris','San\x20Francisco','\x22></div></div>','color','_icon','Adelaide','panBy','Marker','10098261pXGanq','colorPURPLE','marker','28gJYsLd','https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png','colorBROWN','change','map','3557016NrWhCu','tileLayer','colorYELLOW','transform\x200.3s','10LjQWBY','16szUXbl','Beijing','<div\x20class=\x22marker-container\x22><div\x20class=\x22pulse-icon\x20','2784660qGnVXr','forEach','Berlin','Yokohama','Singapore','24QnWulI','bindPopup','colorBLACK'];_0x3808=function(){return _0x4a4138;};return _0x3808();}var markerData=[{'lat':0x32,'lng':0x1e,'popup':'Kyiv','color':_0x4dfb72(0xfd)},{'lat':31.7683,'lng':35.2137,'popup':'Jerusalem','color':_0x4dfb72(0xe1)},{'lat':40.7128,'lng':-74.006,'popup':'New\x20York','color':'colorBLACK'},{'lat':35.6895,'lng':139.6917,'popup':_0x4dfb72(0xf3),'color':_0x4dfb72(0xcd)},{'lat':51.5074,'lng':-0.1278,'popup':_0x4dfb72(0xe0),'color':_0x4dfb72(0xd2)},{'lat':-22.9068,'lng':-43.1729,'popup':'Rio\x20de\x20Janeiro','color':'colorRED'},{'lat':-33.8688,'lng':151.2093,'popup':_0x4dfb72(0xef),'color':_0x4dfb72(0xfd)},{'lat':48.8566,'lng':2.3522,'popup':_0x4dfb72(0xf4),'color':'colorDARKBLUE'},{'lat':34.0522,'lng':-118.2437,'popup':'Los\x20Angeles','color':_0x4dfb72(0xdf)},{'lat':40.7306,'lng':-73.9352,'popup':_0x4dfb72(0xed),'color':_0x4dfb72(0xcd)},{'lat':55.7558,'lng':37.6173,'popup':'Moscow','color':_0x4dfb72(0xd2)},{'lat':34.0522,'lng':118.2437,'popup':'San\x20Francisco','color':_0x4dfb72(0xee)},{'lat':52.52,'lng':13.405,'popup':_0x4dfb72(0xda),'color':_0x4dfb72(0xfd)},{'lat':39.9042,'lng':116.4074,'popup':_0x4dfb72(0xd6),'color':'colorDARKBLUE'},{'lat':41.9028,'lng':12.4964,'popup':'Rome','color':_0x4dfb72(0xdf)},{'lat':55.6761,'lng':12.5683,'popup':'Copenhagen','color':'colorBROWN'},{'lat':37.7749,'lng':-122.4194,'popup':_0x4dfb72(0xf5),'color':_0x4dfb72(0xd2)},{'lat':-34.6037,'lng':-58.3816,'popup':'Buenos\x20Aires','color':_0x4dfb72(0xee)},{'lat':19.4326,'lng':-99.1332,'popup':_0x4dfb72(0xe8),'color':'colorPURPLE'},{'lat':1.3521,'lng':103.8198,'popup':_0x4dfb72(0xdc),'color':_0x4dfb72(0xe1)},{'lat':39.9334,'lng':32.8597,'popup':'Ankara','color':'colorBLACK'},{'lat':45.4215,'lng':-75.6992,'popup':_0x4dfb72(0xe2),'color':_0x4dfb72(0xcd)},{'lat':-34.9285,'lng':138.6007,'popup':_0x4dfb72(0xf9),'color':_0x4dfb72(0xd2)},{'lat':35.6762,'lng':139.6503,'popup':_0x4dfb72(0xdb),'color':_0x4dfb72(0xee)}];markerData[_0x4dfb72(0xd9)](function(_0x45fc85){var _0x2b8a12=_0x4dfb72,_0x578261=createPulsingMarker(_0x45fc85['lat'],_0x45fc85[_0x2b8a12(0xe9)],_0x45fc85['popup'],_0x45fc85[_0x2b8a12(0xf7)]);markers['push']({'marker':_0x578261,'color':_0x45fc85['color']});});function pan(_0x30afa3,_0x262587){var _0x6bd7ab=_0x4dfb72;map[_0x6bd7ab(0xfa)]([_0x30afa3,_0x262587]);}map['on'](_0x4dfb72(0xea),function(){var _0x17735d=_0x4dfb72;map[_0x17735d(0xe5)](function(_0x4891af){var _0x440636=_0x17735d;_0x4891af instanceof L[_0x440636(0xfb)]&&(_0x4891af[_0x440636(0xf8)][_0x440636(0xf1)]['transition']=_0x440636(0xd3));});});function _0x3bce(_0x4e07ac,_0x19e7c2){var _0x3808a0=_0x3808();return _0x3bce=function(_0x3bce0a,_0x3fc716){_0x3bce0a=_0x3bce0a-0xcb;var _0x38a2fe=_0x3808a0[_0x3bce0a];return _0x38a2fe;},_0x3bce(_0x4e07ac,_0x19e7c2);}function filterMarkers(_0x35bf67){var _0x5bba87=_0x4dfb72;markers[_0x5bba87(0xd9)](function(_0x2575f9){var _0x44953e=_0x5bba87;_0x35bf67==='all'||_0x2575f9[_0x44953e(0xf7)]===_0x35bf67?_0x2575f9[_0x44953e(0xfe)]['addTo'](map):map['removeLayer'](_0x2575f9[_0x44953e(0xfe)]);});}document[_0x4dfb72(0xe4)]('filter')['addEventListener'](_0x4dfb72(0xce),function(_0x289bcd){var _0x219a2d=_0x4dfb72,_0x3e5829=_0x289bcd[_0x219a2d(0xe7)][_0x219a2d(0xe6)];filterMarkers(_0x3e5829);});
+// Map initialization with deferred rendering
+var map = L.map('map', {
+    center: [15.4542, 18.7322],
+    zoom: 3,
+    maxBoundsViscosity: 1.0,
+    preferCanvas: true, // Use canvas for rendering (improves performance)
+  });
+  map.invalidateSize();
+  // Adding OpenStreetMap layer with deferred loading
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    tileSize: 256,
+    updateWhenIdle: true, // Load tiles only after map movement is complete
+    updateWhenZooming: false // Disable tile loading during zoom
+  }).addTo(map);
+  // Array to store markers
+  var markers = [];
+  
+  // Function to create pulsating marker
+  function createPulsingMarker(lat, lng, popupContent, type) {
+    var markerHtml = `<div class="marker-container"><div class="pulse-icon ${type}"></div></div>`;
+    
+    var pulsingIcon = L.divIcon({
+      html: markerHtml,
+      className: '',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+    
+    var marker = L.marker([lat, lng], {
+      icon: pulsingIcon
+    }).addTo(map);
+    
+    marker.bindPopup(popupContent);
+    
+    return marker;
+  }
+  
+  // New points
+  var markerData = [
+    { lat: 50.0, lng: 30.0, popup: 'Kyiv', color: 'colorPURPLE' },
+    { lat: 31.7683, lng: 35.2137, popup: 'Jerusalem', color: 'colorDARKBLUE' },
+    { lat: 40.7128, lng: -74.0060, popup: 'New York', color: 'colorBLACK' },
+    { lat: 35.6895, lng: 139.6917, popup: 'Tokyo', color: 'colorBROWN' },
+    { lat: 51.5074, lng: -0.1278, popup: 'London', color: 'colorYELLOW' },
+    { lat: -22.9068, lng: -43.1729, popup: 'Rio de Janeiro', color: 'colorRED' },
+    { lat: -33.8688, lng: 151.2093, popup: 'Sydney', color: 'colorPURPLE' },
+    { lat: 48.8566, lng: 2.3522, popup: 'Paris', color: 'colorDARKBLUE' },
+    { lat: 34.0522, lng: -118.2437, popup: 'Los Angeles', color: 'colorBLACK' },
+    { lat: 40.7306, lng: -73.9352, popup: 'Boston', color: 'colorBROWN' },
+    { lat: 55.7558, lng: 37.6173, popup: 'Moscow', color: 'colorYELLOW' },
+    { lat: 34.0522, lng: 118.2437, popup: 'San Francisco', color: 'colorRED' },
+    { lat: 52.52, lng: 13.405, popup: 'Berlin', color: 'colorPURPLE' },
+    { lat: 39.9042, lng: 116.4074, popup: 'Beijing', color: 'colorDARKBLUE' },
+    { lat: 41.9028, lng: 12.4964, popup: 'Rome', color: 'colorBLACK' },
+    { lat: 55.6761, lng: 12.5683, popup: 'Copenhagen', color: 'colorBROWN' },
+    { lat: 37.7749, lng: -122.4194, popup: 'San Francisco', color: 'colorYELLOW' },
+    { lat: -34.6037, lng: -58.3816, popup: 'Buenos Aires', color: 'colorRED' },
+    { lat: 19.4326, lng: -99.1332, popup: 'Mexico City', color: 'colorPURPLE' },
+    { lat: 1.3521, lng: 103.8198, popup: 'Singapore', color: 'colorDARKBLUE' },
+    { lat: 39.9334, lng: 32.8597, popup: 'Ankara', color: 'colorBLACK' },
+    { lat: 45.4215, lng: -75.6992, popup: 'Ottawa', color: 'colorBROWN' },
+    { lat: -34.9285, lng: 138.6007, popup: 'Adelaide', color: 'colorYELLOW' },
+    { lat: 35.6762, lng: 139.6503, popup: 'Yokohama', color: 'colorRED' }
+  ];
+  
+  // Adding markers and storing them in the array
+  markerData.forEach(function(m) {
+    var newMarker = createPulsingMarker(m.lat, m.lng, m.popup, m.color);
+    markers.push({ marker: newMarker, color: m.color });
+  });
+  
+  function pan(x, y) {
+    map.panBy([x, y]); // Moves the map by x and y pixels
+  }
+  
+  // Performance optimization during zooming
+  map.on('zoomend', function() {
+    map.eachLayer(function(layer) {
+      if (layer instanceof L.Marker) {
+        layer._icon.style.transition = 'transform 0.3s';
+      }
+    });
+  });
+  
+  // Marker filtering function
+  function filterMarkers(color) {
+    markers.forEach(function(item) {
+      if (color === 'all' || item.color === color) {
+        item.marker.addTo(map); // Show marker
+      } else {
+        map.removeLayer(item.marker); // Hide marker
+      }
+    });
+  }
+  
+  // Apply filter when dropdown value changes
+  document.getElementById('filter').addEventListener('change', function(e) {
+    var selectedColor = e.target.value;
+    filterMarkers(selectedColor);
+  });
