@@ -36,7 +36,7 @@ var map = L.map('map', {
     return marker;
   }
   
-  const response =  axios.get("https://backend-n8n-lkkb.onrender.com/api/items").then((({data})=>{
+  const response =  axios.get("https://backend-n8n.vercel.app/api/items").then((({data})=>{
     const colors = ['colorYELLOW', 'colorPURPLE' , 'colorDARKBLUE']
     console.log(data.map((item)=>({lat:item.latitude,lng:item.longitude,popup:item.name,color:colors[item.event_type_id-2]})))
     console.log(data)
